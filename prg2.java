@@ -1,31 +1,38 @@
-import java.util.Scanner;
-
+import java.util.*;
 public class prg2 {
-            public static void main (String[] args)
+
+        public static void main(String args[])
+        {
+            int n, status = 1, x = 3, count, j;
+
+            Scanner in = new Scanner(System.in);
+            System.out.println("zadej kolik chces prvocisel:");
+            n = in.nextInt();
+
+            if (n >= 1)
             {
-                Scanner scanner = new Scanner(System.in);
-                int i =0;
-                int num =0;
-                String  primeNum = "";
-                System.out.println("zadej cislo do ktereho chces prvocisla:");
-                int n = scanner.nextInt();
-                scanner.close();
-                for (i = 1; i <= n; i++)
+                System.out.println("prvnich "+n+" prvocisel je:");
+                System.out.println(2);
+            }
+
+            for (count = 2; count <=n; )
+            {
+                for (j = 2; j <= Math.sqrt(x); j++)
                 {
-                    int counter=0;
-                    for(num =i; num>=1; num--)
+                    if (x%j == 0)
                     {
-                        if(i%num==0)
-                        {
-                            counter = counter + 1;
-                        }
-                    }
-                    if (counter ==2)
-                    {
-                        primeNum = primeNum + i + " ";
+                        status = 0;
+                        break;
                     }
                 }
-                System.out.println("prvocisla jsou:");
-                System.out.println(primeNum);
+                if (status != 0)
+                {
+                    System.out.println(x);
+                    count++;
+                }
+                status = 1;
+                x++;
             }
         }
+
+}
